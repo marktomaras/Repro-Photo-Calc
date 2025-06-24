@@ -176,9 +176,10 @@
       }
     }
 
-    window.onload = function () {
+    document.addEventListener('DOMContentLoaded', function () {
       calculateReproPrice(); // Initial load
-      document.getElementById("calcButton").addEventListener("click", calculateReproPrice);
+      document.getElementById("calcButton").addEventListener("touchstart", function(e) { e.preventDefault(); calculateReproPrice(); });
+document.getElementById("calcButton").addEventListener("click", calculateReproPrice);
     });
   </script>
 </body>
