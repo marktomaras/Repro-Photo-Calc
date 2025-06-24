@@ -132,18 +132,19 @@
       </div>
       <div id="price1to4">€0.00</div>
       <div>
-        5–9 Pieces<br><span class="subtext">(10% Disc)</span>
+        5–9 Pieces<br><span class="subtext">(10% Discount)</span>
       </div>
       <div id="price5to9">€0.00</div>
       <div>
-        10–15 Pieces<br><span class="subtext">(15% Disc)</span>
+        10–15 Pieces<br><span class="subtext">(15% Discount)</span>
       </div>
       <div id="price10to15">€0.00</div>
       <div>
-        16+ Pieces<br><span class="subtext">(20% Disc)</span>
+        16+ Pieces<br><span class="subtext">(20% Discount)</span>
       </div>
       <div id="price16plus">€0.00</div>
     </div>
+    <div style="text-align: right; font-size: 0.75rem; font-family: Helvetica Neue Light, Arial, sans-serif; color: #666; margin-top: 0.5rem;">IVA Additional</div>
   </div>
 
   <script>
@@ -176,11 +177,13 @@
       }
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
+    window.onload = function () {
       calculateReproPrice(); // Initial load
-      document.getElementById("calcButton").addEventListener("touchstart", function(e) { e.preventDefault(); calculateReproPrice(); });
-document.getElementById("calcButton").addEventListener("click", calculateReproPrice);
-    });
+      document.getElementById("calcButton").addEventListener("click", calculateReproPrice);
+document.getElementById("size").addEventListener("change", calculateReproPrice);
+document.getElementById("metallic").addEventListener("change", calculateReproPrice);
+document.getElementById("detail").addEventListener("change", calculateReproPrice);
+    };
   </script>
 </body>
 </html>
