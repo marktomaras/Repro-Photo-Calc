@@ -120,10 +120,7 @@
           <option value="64frame">64 Frame Multi-Capture</option>
         </select>
       </div>
-      <div class="form-group" style="align-items: flex-end; display: flex; justify-content: flex-end;">
-        <button id="calcButton">Calculate</button>
-      </div>
-    </div>
+          </div>
     <div class="results-grid">
       <div class="heading">Quantity</div>
       <div class="heading">Price per Piece</div>
@@ -179,8 +176,7 @@
 
     window.onload = function () {
       calculateReproPrice(); // Initial load
-      document.getElementById("calcButton").addEventListener("click", calculateReproPrice);
-document.getElementById("size").addEventListener("change", calculateReproPrice);
+      document.getElementById("size").addEventListener("change", calculateReproPrice);
 document.getElementById("metallic").addEventListener("change", calculateReproPrice);
 document.getElementById("detail").addEventListener("change", calculateReproPrice);
     };
