@@ -70,27 +70,26 @@
     button:hover {
       background-color: #254a99;
     }
-    .discount-table {
-      width: 100%;
-      border-collapse: collapse;
+    .results-grid {
       margin-top: 2rem;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
     }
-    .discount-table th, .discount-table td {
-      border: 1px solid #ccc;
+    .results-grid div {
       padding: 1rem;
+      background: #e6f0fa;
+      border: 1px solid #ccc;
       text-align: center;
-      vertical-align: middle;
     }
-    .discount-table th {
-      background-color: #f9f9f9;
+    .results-grid .heading {
+      font-weight: bold;
+      background: #f9f9f9;
     }
-    .discount-table td {
-      background-color: #e6f0fa;
-    }
-    .discount-table th:not(:first-child) {
-      font-family: 'Helvetica Neue Light', Arial, sans-serif;
-      font-weight: 300;
+    .results-grid .subtext {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 0.25rem;
     }
   </style>
 </head>
@@ -122,29 +121,29 @@
         </select>
       </div>
       <div class="form-group" style="align-items: flex-end; display: flex; justify-content: flex-end;">
-        <button onclick="calculateReproPrice()">Calculate</button>
+        <button id="calcButton">Calculate</button>
       </div>
     </div>
-    <table class="discount-table">
-      <thead>
-        <tr>
-          <th>Quantity</th>
-          <th>1–4 Pieces</th>
-          <th><span style="font-family: 'Helvetica Neue';">5–9 Pieces</span><br><span style="font-family: 'Helvetica Neue Light';">(10% Discount)</span></th>
-          <th><span style="font-family: 'Helvetica Neue';">10–15 Pieces</span><br><span style="font-family: 'Helvetica Neue Light';">(15% Discount)</span></th>
-          <th><span style="font-family: 'Helvetica Neue';">16+ Pieces</span><br><span style="font-family: 'Helvetica Neue Light';">(20% Discount)</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Price per Piece</strong></td>
-          <td id="price1to4">€0.00</td>
-          <td id="price5to9">€0.00</td>
-          <td id="price10to15">€0.00</td>
-          <td id="price16plus">€0.00</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="results-grid">
+      <div class="heading">Quantity</div>
+      <div class="heading">Price per Piece</div>
+      <div>
+        1–4 Pieces
+      </div>
+      <div id="price1to4">€0.00</div>
+      <div>
+        5–9 Pieces<br><span class="subtext">(10% Discount)</span>
+      </div>
+      <div id="price5to9">€0.00</div>
+      <div>
+        10–15 Pieces<br><span class="subtext">(15% Discount)</span>
+      </div>
+      <div id="price10to15">€0.00</div>
+      <div>
+        16+ Pieces<br><span class="subtext">(20% Discount)</span>
+      </div>
+      <div id="price16plus">€0.00</div>
+    </div>
   </div>
 
   <script>
@@ -176,6 +175,12 @@
         document.getElementById(ids[i]).textContent = `€${discounted.toFixed(2)}`;
       }
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      calculateReproPrice(); // Initial load
+      document.getElementById("calcButton").addEventListener("touchstart", function(e) { e.preventDefault(); calculateReproPrice(); });
+document.getElementById("calcButton").addEventListener("click", calculateReproPrice);
+    });
   </script>
 </body>
 </html>
